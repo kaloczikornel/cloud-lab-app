@@ -1,6 +1,10 @@
 const getUser = require('./middlewares/user/getUser');
 const routes = app => {
-    const objRepo = {  };
+    const objRepo = {};
+
+    app.use('/', (req, res, next) => {
+        res.send('Hello World!');
+    });
     // Health check
     app.use('/health', (req, res, next) => res.send('OK'));
 
