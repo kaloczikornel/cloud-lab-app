@@ -35,7 +35,7 @@ async function main() {
     app.set('view engine', 'ejs');
     app.use(
         session({
-            secret: 'ADFBWRTBW§234234DFBSE2342342SDADFBSDFGbasdasd',
+            secret: 'ADFBWRTBW§234234DFBSE2342342DADFBSDFGbasdasd',
             resave: false,
             saveUninitialized: true,
             cookie: { secure: false }
