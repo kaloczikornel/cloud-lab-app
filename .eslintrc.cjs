@@ -1,6 +1,11 @@
 module.exports = {
-    env: { es2020: true },
+    env: {
+        node: true,
+        commonjs: true,
+        es2021: true
+    },
     extends: ['prettier'],
-    parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-    rules: {}
+    parserOptions: {
+        ecmaVersion: 12
+    },
 };
