@@ -5,13 +5,13 @@ const { PORT } = require('./config');
 const db = require('./models/db');
 const session = require('express-session');
 
-const isProd = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 async function main() {
     await db.sequelize.authenticate();
 
     let waitPromise = Promise.resolve();
-    if (!isProd) {
+    if (isProd) {
         waitPromise = db
             .syncByHand()
             .then(() => {
