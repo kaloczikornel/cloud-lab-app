@@ -1,10 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-const setupRoutes = require('./routes');
+const setupRoutes = require('./middlewares/routes');
 const { PORT } = require('./config');
 const db = require('./models/db');
+const session = require('express-session');
 
-const isProd = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV === 'production';
 
 async function main() {
     await db.sequelize.authenticate();
@@ -29,6 +30,17 @@ async function main() {
     const app = express();
 
     app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.static(__dirname));
+    app.set('view engine', 'ejs');
+    app.use(
+        session({
+            secret: 'ADFBWRTBW§234234DFBSE2342342SDADFBSDFGb',
+            resave: false,
+            saveUninitialized: true,
+            cookie: { secure: false }
+        })
+    );
     setupRoutes(app);
 
     app.listen(PORT || 5000, () =>

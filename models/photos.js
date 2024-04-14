@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     return sequelize.define(
-        'users',
+        'photos',
         {
             id: {
                 type: DataTypes.INTEGER(11),
@@ -8,23 +8,21 @@ module.exports = function (sequelize, DataTypes) {
                 primaryKey: true,
                 autoIncrement: true
             },
-            name: {
+            title: {
                 type: DataTypes.STRING(256),
-                allowNull: false,
-                unique: true
+                allowNull: false
             },
-            email: {
-                type: DataTypes.STRING(256),
-                defaultValue: false,
-                unique: true
+            user_id: {
+                type: DataTypes.INTEGER(11),
+                allowNull: false
             },
-            password: {
+            url: {
                 type: DataTypes.STRING(256),
                 allowNull: false
             }
         },
         {
-            tableName: 'users',
+            tableName: 'photos',
             underscored: true,
             charset: 'utf8',
             collate: 'utf8_unicode_ci',

@@ -12,8 +12,14 @@ const models = {
     sequelize,
     Sequelize,
     users: require('./users')(sequelize, Sequelize.DataTypes),
+    photos: require('./photos')(sequelize, Sequelize.DataTypes),
     syncByHand(options) {
-        return models.users.sync(options);
+        return models.users
+            .sync(options)
+            .then(() => models.photos.sync(options));
     }
 };
+
+models.users.hasMany(models.photos, { foreignKey: 'user_id' });
+
 module.exports = models;
