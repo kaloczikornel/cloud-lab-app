@@ -39,6 +39,8 @@ const routes = app => {
     // Health check
     app.use('/health', (req, res, next) => res.send('OK'));
 
+    app.use('/test', (req, res, next) => res.send('Test'));
+
     app.use(
         '/register',
         inverseAuth(objRepo),
