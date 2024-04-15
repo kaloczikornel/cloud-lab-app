@@ -39,7 +39,7 @@ const routes = app => {
     // Health check
     app.use('/health', (req, res, next) => res.send('OK'));
 
-    app.use('/test', (req, res, next) => res.send('Test'));
+    app.use('/test', (req, res, next) => res.send('Testing'));
 
     app.use(
         '/register',
