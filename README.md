@@ -1,1 +1,2 @@
-# cloud-lab-app
+# cloud-lab-app - dokumentáció
+
