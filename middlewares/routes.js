@@ -10,6 +10,7 @@ const getPhotos = require('./photo/getPhotos');
 const { memoryStorage } = require('multer');
 const multer = require('multer');
 const AWS = require('aws-sdk');
+const deletePhoto = require('./photo/deletePhoto');
 const s3 = require('../config').s3;
 
 // Set your AWS credentials
@@ -64,6 +65,8 @@ const routes = app => {
         createPhoto(objRepo),
         render(objRepo, 'upload')
     );
+
+    app.use('/delete/photo/:id', auth(objRepo), deletePhoto(objRepo));
 
     app.use('/', auth(objRepo), getPhotos(objRepo), render(objRepo, 'home'));
 
